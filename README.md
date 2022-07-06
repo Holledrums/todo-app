@@ -31,7 +31,8 @@ step by step creation of a todo list app
 
 ### How to use this Project
 
-npm install --save react react-dom react-scripts
+npm init -y
+npm install --save react react-dom react-scripts node-sass
 
 ##### Developed With
 
