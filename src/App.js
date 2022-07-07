@@ -21,12 +21,16 @@ function App() {
       <br />
       <ul>
         <h3>einkaufen</h3>
-        <li>{buyGroceries.task_name}</li>
+        <li>
+          {buyGroceries.task_name}
+          <input type="checkbox" defaultChecked={buyGroceries.done} />
+        </li>
       </ul>
       <ul>
         <h3>putzen</h3>
         <li>
-          {cleanBathroom.task_name} {}
+          {cleanBathroom.task_name}
+          <input type="checkbox" defaultChecked={cleanBathrom.done} />
         </li>
       </ul>
       <br />
