@@ -30,7 +30,7 @@ function App() {
         <h3>putzen</h3>
         <li>
           {cleanBathroom.task_name}
-          <input type="checkbox" defaultChecked={cleanBathrom.done} />
+          <input type="checkbox" defaultChecked={cleanBathroom.done} />
         </li>
       </ul>
       <br />
