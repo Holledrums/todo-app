@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://holledrums.github.io/todo-app/"
   "scripts": {
     "build": "react-scripts build",
     "start": "react-scripts start",
