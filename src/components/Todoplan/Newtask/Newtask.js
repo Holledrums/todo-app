@@ -34,12 +34,16 @@ export default function Newtask() {
             </div>
           </div>
         </div>
-        <div class="col-sm-3">
-          <label class="visually-hidden" for="specificSizeSelect">
+        <div className="col-sm-3">
+          <label className="visually-hidden" htmlFor="specificSizeSelect">
             Preference
           </label>
-          <select class="form-select" id="specificSizeSelect">
-            <option selected>urgency...</option>
+          <select
+            className="form-select"
+            id="specificSizeSelect"
+            defaultValue="urgency"
+          >
+            <option hidden>urgency...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -48,8 +52,8 @@ export default function Newtask() {
             <option value="6">Six</option>
           </select>
         </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary">
+        <div className="col-auto">
+          <button type="submit" className="btn btn-primary">
             Add New Task
           </button>
         </div>

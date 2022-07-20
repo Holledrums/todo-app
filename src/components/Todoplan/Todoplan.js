@@ -16,10 +16,12 @@ function Todoplan() {
       <h2>Was noch ansteht:</h2>
       <div className="row">
         <div className="col-1">#</div>
-        <div className="col-4">Task</div>
-        <div className="col-3">Who?</div>
-        <div className="col-3">until?</div>
+        <div className="col-3">Task</div>
+        <div className="col-2">Who?</div>
+        <div className="col-2">until?</div>
         <div className="col-1">done?</div>
+        <div className="col-2"></div>
+
         <div>{posts}</div>
       </div>
     </div>
