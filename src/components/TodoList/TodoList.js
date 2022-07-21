@@ -1,11 +1,11 @@
-import "./Todoplan.scss";
+import "./TodoList.scss";
 import todos from "../../todos.js";
-import Post from "../Todoplan/Post/Post.js";
+import TodoItem from "./TodoItem/TodoItem.js";
 import Newtask from "./Newtask/Newtask";
 
-function Todoplan() {
-  const posts = todos.map((post, index) => {
-    return <Post key={index} post={post} />;
+function TodoList() {
+  const items = todos.map((todo, index) => {
+    return <TodoItem key={index} todo={todo} />;
   });
 
   return (
@@ -22,9 +22,9 @@ function Todoplan() {
         <div className="col-1">done?</div>
         <div className="col-2"></div>
 
-        <div>{posts}</div>
+        <div>{items}</div>
       </div>
     </div>
   );
 }
-export default Todoplan;
+export default TodoList;

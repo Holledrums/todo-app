@@ -1,6 +1,6 @@
 import "./Newtask.scss";
 
-export default function Newtask() {
+function Newtask() {
   return (
     <div className="newtask">
       <div className="row g-3">
@@ -61,3 +61,4 @@ export default function Newtask() {
     </div>
   );
 }
+export default Newtask;

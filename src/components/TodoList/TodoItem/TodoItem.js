@@ -1,19 +1,19 @@
-import "./Post.scss";
+import "./TodoItem.scss";
 import React, { useState } from "react";
 import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js";
 
-function Post(props) {
-  const [checked, setChecked] = useState(props.post.done);
+function TodoItem(props) {
+  const [checked, setChecked] = useState(props.todo.done);
 
   const handleChange = () => {
     setChecked(!checked);
   };
   return (
     <div className={`row ${checked ? "completed" : null}`}>
-      <div className="col-1">{props.post.urgency}</div>
-      <div className="col-3">{props.post.task}</div>
-      <div className="col-2">{props.post.doneBy}</div>
-      <div className="col-2">{props.post.date}</div>
+      <div className="col-1">{props.todo.urgency}</div>
+      <div className="col-3">{props.todo.task}</div>
+      <div className="col-2">{props.todo.doneBy}</div>
+      <div className="col-2">{props.todo.date}</div>
       <div className="col-1">
         <div className="input-group-text">
           <input
@@ -38,4 +38,4 @@ function Post(props) {
     </div>
   );
 }
-export default Post;
+export default TodoItem;
