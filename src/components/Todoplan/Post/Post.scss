@@ -1,8 +1,11 @@
 .completed {
   text-decoration: line-through;
 }
-.symbol {
-  display: block;
+.symbolpen:hover {
+  color: green;
+}
+.symboltrash:hover {
+  color: red;
 }
 input {
   display: block;

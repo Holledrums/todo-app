@@ -26,12 +26,12 @@ function Post(props) {
         </div>
       </div>
       <div className="col-1">
-        <i className="fa-solid fa-pen"></i>
+        <i className="fa-solid fa-pen symbolpen"></i>
       </div>
       <div className="col-1">
         {checked && (
           <span>
-            <i className="fa-solid fa-trash-can"></i>
+            <i className="fa-solid fa-trash-can symboltrash"></i>
           </span>
         )}
       </div>
