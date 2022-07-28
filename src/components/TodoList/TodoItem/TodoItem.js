@@ -31,77 +31,94 @@ function TodoItem(props) {
             <div className="col-1">
               {" "}
               <input
+                className="inputField"
                 type="text"
-                value={props.todo.urgency}
+                value={todo.urgency}
                 name="urgency"
                 onChange={handleChange}
               />
             </div>
             <div className="col-3">
               <input
+                className="inputField"
                 type="text"
-                value={props.todo.task}
+                value={todo.task}
                 name="task"
                 onChange={handleChange}
               />
             </div>
             <div className="col-2">
               <input
+                className="inputField"
                 type="text"
-                value={props.todo.doneBy}
+                value={todo.doneBy}
                 name="doneBy"
                 onChange={handleChange}
               />
             </div>
             <div className="col-2">
               <input
+                className="inputField"
                 type="text"
-                value={props.todo.date}
+                value={todo.date}
                 name="date"
                 onChange={handleChange}
               />
             </div>
             <div className="col-1">
-              <i
-                type="button"
-                onClick={toggleEditMode}
-                class="fa-solid fa-floppy-disk symbolSave"
-              ></i>
+              <div className="input-group-text ">
+                <input
+                  className="form-check-input mt-0"
+                  type="checkbox"
+                  checked={todo.status}
+                  onChange={markDone}
+                  aria-label="Checkbox for following text input"
+                />
+              </div>
+            </div>
+            <div className="col-1">
+              <button type="button" onClick={toggleEditMode}>
+                <i
+                  className="fa-solid fa-floppy-disk symbolSave"
+                  title="save task"
+                ></i>
+              </button>
             </div>
           </>
         ) : (
           <>
-            <div className="col-1">{props.todo.urgency}</div>
-            <div className="col-3">{props.todo.task}</div>
-            <div className="col-2">{props.todo.doneBy}</div>
-            <div className="col-2">{props.todo.date}</div>
+            <div className="col-1">{todo.urgency}</div>
+            <div className="col-3">{todo.task}</div>
+            <div className="col-2">{todo.doneBy}</div>
+            <div className="col-2">{todo.date}</div>
+            <div className="col-1">
+              <div className="input-group-text ">
+                <input
+                  className="form-check-input mt-0"
+                  type="checkbox"
+                  checked={todo.status}
+                  onChange={markDone}
+                  aria-label="Checkbox for following text input"
+                />
+              </div>
+            </div>
+            <div className="col-1">
+              <button type="button" onClick={toggleEditMode}>
+                <i className="fa-solid fa-pen symbolpen" title="edit task"></i>
+              </button>
+            </div>
+            <div className="col-1">
+              {todo.status && (
+                <button type="button">
+                  <i
+                    className="fa-solid fa-trash-can symboltrash"
+                    title="delete task"
+                  ></i>
+                </button>
+              )}
+            </div>
           </>
         )}
-        <div className="col-1">
-          <div className="input-group-text ">
-            <input
-              className="form-check-input mt-0"
-              type="checkbox"
-              checked={todo.status}
-              onChange={markDone}
-              aria-label="Checkbox for following text input"
-            />
-          </div>
-        </div>
-        <div className="col-1">
-          <i
-            type="button"
-            onClick={toggleEditMode}
-            className="fa-solid fa-pen symbolpen"
-          ></i>
-        </div>
-        <div className="col-1">
-          {todo.status && (
-            <span>
-              <i className="fa-solid fa-trash-can symboltrash"></i>
-            </span>
-          )}
-        </div>
       </div>
     </>
   );
