@@ -1,6 +1,7 @@
 import "./TodoItem.scss";
 import React, { useState } from "react";
 import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js";
+import { SaveFilled, EditFilled, DeleteFilled } from "@ant-design/icons";
 
 function TodoItem(props) {
   const [todo, setTodo] = useState(props.todo);
@@ -77,12 +78,12 @@ function TodoItem(props) {
               </div>
             </div>
             <div className="col-1">
-              <button type="button" onClick={toggleEditMode}>
-                <i
-                  className="fa-solid fa-floppy-disk symbolSave"
-                  title="save task"
-                ></i>
-              </button>
+              <SaveFilled
+                type="button"
+                onClick={toggleEditMode}
+                className="symbolSave"
+                title="save task"
+              />
             </div>
           </>
         ) : (
@@ -103,18 +104,20 @@ function TodoItem(props) {
               </div>
             </div>
             <div className="col-1">
-              <button type="button" onClick={toggleEditMode}>
-                <i className="fa-solid fa-pen symbolpen" title="edit task"></i>
-              </button>
+              <EditFilled
+                className="symbolpen"
+                type="button"
+                onClick={toggleEditMode}
+                title="edit task"
+              />
             </div>
             <div className="col-1">
               {todo.status && (
-                <button type="button">
-                  <i
-                    className="fa-solid fa-trash-can symboltrash"
-                    title="delete task"
-                  ></i>
-                </button>
+                <DeleteFilled
+                  className="symboltrash"
+                  type="button"
+                  title="delete task"
+                />
               )}
             </div>
           </>
