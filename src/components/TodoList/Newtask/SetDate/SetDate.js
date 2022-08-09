@@ -6,7 +6,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { format } from "date-fns";
 
 export default function SetDate(props) {
-  const [value, setValue] = React.useState(format(new Date(), "dd/MM/yyyy"));
+  const [value, setValue] = React.useState(new Date());
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
