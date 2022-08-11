@@ -2,16 +2,32 @@ import "./TodoList.scss";
 import todos from "../../todos.js";
 import TodoItem from "./TodoItem/TodoItem.js";
 import Newtask from "./Newtask/Newtask";
+import React, { useReducer } from "react";
+
+const initState = {
+  todos: todos,
+  newTodo: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "createNewTodo":
+      const updatedTodos = [action.payload, ...state.todos];
+      console.log(updatedTodos);
+      return {
+        ...state,
+        todos: updatedTodos,
+      };
+  }
+};
 
 function TodoList() {
-  const items = todos.map((todo, index) => {
-    return <TodoItem key={index} todo={todo} />;
-  });
+  const [state, dispatch] = useReducer(reducer, initState);
 
   return (
     <div className="container">
       <div>
-        <Newtask />
+        <Newtask dispatch={dispatch} />
       </div>
       <h2>Was noch ansteht:</h2>
       <div className="row">
@@ -22,7 +38,12 @@ function TodoList() {
         <div className="col-1">done?</div>
         <div className="col-2"></div>
 
-        <div>{items}</div>
+        <div>
+          {state.todos.map((todo, index) => {
+            console.log(todo);
+            return <TodoItem key={index} todo={todo} />;
+          })}
+        </div>
       </div>
     </div>
   );

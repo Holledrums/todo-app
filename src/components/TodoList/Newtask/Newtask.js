@@ -1,7 +1,32 @@
 import "./Newtask.scss";
+import React, { useState, useReducer } from "react";
 import SetDate from "./SetDate/SetDate";
 
-function Newtask() {
+const initState = {
+  date: "",
+  task: "",
+  urgency: "",
+  doneBy: "",
+  status: false,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "updateChange":
+      const updatedState = { ...state };
+      updatedState[action.name] = action.payload;
+
+      return updatedState;
+  }
+};
+
+function Newtask(props) {
+  const [state, dispatch] = useReducer(reducer, initState);
+
+  const createNewTodo = () => {
+    props.dispatch({ type: "createNewTodo", payload: state });
+  };
+
   return (
     <div className="newtask">
       <div className="row g-3">
@@ -11,6 +36,15 @@ function Newtask() {
             className="form-control"
             placeholder="add new task"
             aria-label=""
+            value={state.task}
+            name="task"
+            onChange={(e) => {
+              dispatch({
+                type: "updateChange",
+                payload: e.target.value,
+                name: e.target.name,
+              });
+            }}
           />
         </div>
         <div className="col-sm">
@@ -19,12 +53,21 @@ function Newtask() {
             className="form-control"
             placeholder="Name who should do it?"
             aria-label=""
+            value={state.doneBy}
+            name="doneBy"
+            onChange={(e) => {
+              dispatch({
+                type: "updateChange",
+                payload: e.target.value,
+                name: e.target.name,
+              });
+            }}
           />
         </div>
         <div className="col-sm-6">
           <div className="form-group">
             <div className="input-group date" id="datetimepicker1">
-              <SetDate />
+              <SetDate dispatch={dispatch} value={state.date} />
             </div>
           </div>
         </div>
@@ -36,6 +79,15 @@ function Newtask() {
             className="form-select"
             id="specificSizeSelect"
             defaultValue="urgency"
+            value={state.urgency}
+            name="urgency"
+            onChange={(e) => {
+              dispatch({
+                type: "updateChange",
+                payload: e.target.value,
+                name: e.target.name,
+              });
+            }}
           >
             <option hidden>urgency...</option>
             <option value="1">One</option>
@@ -47,7 +99,13 @@ function Newtask() {
           </select>
         </div>
         <div className="col-auto">
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
+              createNewTodo();
+            }}
+          >
             Add New Task
           </button>
         </div>
