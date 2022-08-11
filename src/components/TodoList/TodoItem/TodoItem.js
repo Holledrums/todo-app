@@ -4,20 +4,20 @@ import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
 import { SaveFilled, EditFilled, DeleteFilled } from "@ant-design/icons";
 
 function TodoItem(props) {
-  const [todo, setTodo] = useState(props.todo);
+  const [updatedTodo, setUpdatedTodo] = useState(props.todo);
   const [editMode, setEditMode] = useState(false);
 
   const handleChange = (event) => {
-    setTodo({
-      ...todo,
+    setUpdatedTodo({
+      ...updatedTodo,
       [event.target.name]: event.target.value,
     });
   };
 
   const markDone = () => {
-    setTodo({
-      ...todo,
-      status: !todo.status,
+    setupdatedTodo({
+      ...updatedTodo,
+      status: !updatedTodo.status,
     });
   };
   const toggleEditMode = () => {
@@ -26,7 +26,7 @@ function TodoItem(props) {
 
   return (
     <>
-      <div className={`row ${todo.status ? "completed" : null}`}>
+      <div className={`row ${props.todo.status ? "completed" : null}`}>
         {editMode ? (
           <>
             <div className="col-1">
@@ -34,7 +34,7 @@ function TodoItem(props) {
               <input
                 className="inputField"
                 type="text"
-                value={todo.urgency}
+                value={updatedTodo.urgency}
                 name="urgency"
                 onChange={handleChange}
               />
@@ -43,7 +43,7 @@ function TodoItem(props) {
               <input
                 className="inputField"
                 type="text"
-                value={todo.task}
+                value={updatedTodo.task}
                 name="task"
                 onChange={handleChange}
               />
@@ -52,7 +52,7 @@ function TodoItem(props) {
               <input
                 className="inputField"
                 type="text"
-                value={todo.doneBy}
+                value={updatedTodo.doneBy}
                 name="doneBy"
                 onChange={handleChange}
               />
@@ -61,7 +61,7 @@ function TodoItem(props) {
               <input
                 className="inputField"
                 type="text"
-                value={todo.date}
+                value={updatedTodo.date}
                 name="date"
                 onChange={handleChange}
               />
@@ -71,7 +71,7 @@ function TodoItem(props) {
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
-                  checked={todo.status}
+                  checked={updatedTodo.status}
                   onChange={markDone}
                   aria-label="Checkbox for following text input"
                 />
@@ -80,7 +80,10 @@ function TodoItem(props) {
             <div className="col-1">
               <SaveFilled
                 type="button"
-                onClick={toggleEditMode}
+                onClick={() => {
+                  toggleEditMode();
+                  props.dispatch({ type: "updateTodo" });
+                }}
                 className="symbolSave"
                 title="save task"
               />
@@ -88,16 +91,16 @@ function TodoItem(props) {
           </>
         ) : (
           <>
-            <div className="col-1">{todo.urgency}</div>
-            <div className="col-3">{todo.task}</div>
-            <div className="col-2">{todo.doneBy}</div>
-            <div className="col-2">{todo.date}</div>
+            <div className="col-1">{props.todo.urgency}</div>
+            <div className="col-3">{props.todo.task}</div>
+            <div className="col-2">{props.todo.doneBy}</div>
+            <div className="col-2">{props.todo.date}</div>
             <div className="col-1">
               <div className="input-group-text ">
                 <input
                   className="form-check-input mt-0"
                   type="checkbox"
-                  checked={todo.status}
+                  checked={updatedTodo.status}
                   onChange={markDone}
                   aria-label="Checkbox for following text input"
                 />

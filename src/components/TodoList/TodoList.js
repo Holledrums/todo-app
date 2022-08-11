@@ -18,6 +18,8 @@ const reducer = (state, action) => {
         ...state,
         todos: updatedTodos,
       };
+    default:
+      return state;
   }
 };
 
