@@ -1,0 +1,29 @@
+.completed {
+  text-decoration: line-through;
+}
+
+.symbolpen:hover {
+  font-size: 1.15em;
+  color: green;
+}
+
+.symboltrash:hover {
+  font-size: 1.15em;
+  color: red;
+}
+
+.symbolSave:hover {
+  font-size: 1.15em;
+  color: purple;
+}
+
+input {
+  display: block;
+  border: none;
+}
+
+.inputField {
+  border: 1px solid;
+  box-shadow: inset 0 0 2px #000000;
+  max-width: 160px;
+}/*# sourceMappingURL=TodoItem.css.map */
